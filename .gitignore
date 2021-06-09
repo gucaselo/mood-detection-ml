@@ -9,6 +9,13 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+data/ravdessdata/
+facial_detection/emotions_dataset/
+facial_detection/old/
+facial_detection/test_video.mp4
+readme info.txt
+
+
 develop-eggs/
 dist/
 downloads/
