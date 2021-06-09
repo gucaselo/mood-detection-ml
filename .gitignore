@@ -14,6 +14,7 @@ facial_detection/emotions_dataset/
 facial_detection/old/
 facial_detection/test_video.mp4
 readme info.txt
+mood_model_RandomForest_v4.ipynb
 
 
 develop-eggs/
