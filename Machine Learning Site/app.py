@@ -21,7 +21,14 @@ def success():
     if request.method == 'POST':  
         f = request.files['file']  
         f.save(f.filename)  
+
+        # Run model to predict mood
         result = feature_extraction.make_prediction(f.filename)
+
+        if os.path.exists(f.filename):
+            # Remove file after processing
+            os.remove(f.filename)
+
         return render_template("success.html", name = result)  
   
 if __name__ == '__main__':  
