@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <title>Emotion Detector</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="html/style.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="html/style.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="html/style.css" media="screen">
+    <link href="{{ url_for('static', filename = 'css/style.css') }}" rel="stylesheet" />
   </head>
   <body>
     <section class="page-header">
@@ -16,9 +14,7 @@
       <a href="##" class="btn">Text</a>
       <a href="##" class="btn">Record</a>
       <a href="##" class="btn">Video</a>
-      <a href="##" class="btn">Video
-        
-      </a>
+
     </section>
 
     <form action = "/success" method = "post" enctype="multipart/form-data">  
