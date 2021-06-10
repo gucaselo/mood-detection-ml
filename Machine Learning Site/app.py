@@ -9,12 +9,34 @@ import os, glob
 from imutils import face_utils
 import argparse
 import imutils
+# from camera import VideoCamera
 
 app = Flask(__name__)  
- 
+
+# camera = cv2.VideoCapture(0)
+
+# def gen_frames():  
+#     while True:
+#         success, frame = camera.read()  # read the camera frame
+        
+#         if not success:
+#             break
+#         else:
+#             ret, buffer = cv2.imencode('.jpg', frame)
+#             frame = buffer.tobytes()
+#             yield (b'--frame\r\n'
+#                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
+
 @app.route('/')  
 def upload():  
-    return render_template("index.html")  
+    return render_template("index.html") 
+
+# @app.route('/video_feed')
+# def video_feed():
+#     result = Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+#     print(result)
+
+#     return result
  
 @app.route('/success', methods = ['POST'])  
 def success():  
@@ -59,6 +81,18 @@ def success():
             # Remove file after processing
             if os.path.exists(imagef.filename):
                 os.remove(imagef.filename)
+            # return render_template("success.html", name = dicti)  
+            return render_template("success.html", name = [result]) 
+
+        elif request.files['audio']:
+
+            audiof = request.files['audio'] 
+            audiof.save(audiof.filename) 
+            result = feature_extraction.audio_prediction(audiof.filename)
+
+            # Remove file after processing
+            if os.path.exists(audiof.filename):
+                os.remove(audiof.filename)
             # return render_template("success.html", name = dicti)  
             return render_template("success.html", name = [result]) 
 

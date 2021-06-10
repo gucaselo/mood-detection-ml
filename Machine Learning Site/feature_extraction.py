@@ -198,6 +198,55 @@ def image_prediction(path):
     
     return result_dict
 
+
+#--------------------------------------------------------#
+#                       Audio Mood                       #
+#--------------------------------------------------------#
+
+# Extract features (mfcc, chroma, mel) from a sound file
+def extract_feature(file_name, mfcc, chroma, mel):
+    import librosa
+    import soundfile
+    import os, glob, pickle
+    import numpy as np
+    from sklearn.model_selection import train_test_split
+    from sklearn.neural_network import MLPClassifier
+    from sklearn.metrics import accuracy_score
+    import pandas as pd
+
+    with soundfile.SoundFile(file_name) as sound_file:
+        X = sound_file.read(dtype="float32")
+        sample_rate=sound_file.samplerate
+        if chroma:
+            stft=np.abs(librosa.stft(X))
+        result=np.array([])
+        if mfcc:
+            mfccs=np.mean(librosa.feature.mfcc(y=X, sr=sample_rate, n_mfcc=40).T, axis=0)
+            result=np.hstack((result, mfccs))
+        if chroma:
+            chroma=np.mean(librosa.feature.chroma_stft(S=stft, sr=sample_rate).T,axis=0)
+            result=np.hstack((result, chroma))
+        if mel:
+            mel=np.mean(librosa.feature.melspectrogram(X, sr=sample_rate).T,axis=0)
+            result=np.hstack((result, mel))
+    return result
+
+def audio_prediction(path):
+    import os, glob, pickle
+    feature = extract_feature(path, mfcc=True, chroma=True, mel=True)
+    filename = 'static/voice_dataset/voice_emotions_model.sav'
+    model = pickle.load(open(filename, 'rb'))
+    
+    result = model.predict(feature.reshape(1, -1))
+    
+    result_dict = {'audio':result[0]}
+    
+    return result_dict
+
+
+
+
+
 #--------------------------------------------------------#
 #                   Video & Image Mood                   #
 #--------------------------------------------------------#
