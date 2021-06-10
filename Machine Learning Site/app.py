@@ -19,17 +19,50 @@ def upload():
 @app.route('/success', methods = ['POST'])  
 def success():  
     if request.method == 'POST':  
-        f = request.files['file']  
-        f.save(f.filename)  
 
-        # Run model to predict mood
-        result = feature_extraction.make_prediction(f.filename)
+        if request.files['video'] and request.files['image']:
+            videof = request.files['video'] 
+            imagef = request.files['image']  
+            videof.save(videof.filename)
+            imagef.save(imagef.filename) 
 
-        if os.path.exists(f.filename):
+            # Run model to predict mood
+            result = feature_extraction.make_prediction(videof.filename)
+            
             # Remove file after processing
-            os.remove(f.filename)
+            if os.path.exists(videof.filename and imagef.filename):
+                os.remove(videof.filename)
+                os.remove(imagef.filename)
+            return render_template("success.html", name = result) 
 
-        return render_template("success.html", name = result)  
+        elif request.files['video']:
+
+            videof = request.files['video']  
+            videof.save(videof.filename)
+
+            # Run model to predict mood
+            result = feature_extraction.make_prediction(videof.filename)
+            
+            # Remove file after processing
+            if os.path.exists(videof.filename):
+                os.remove(videof.filename)
+            return render_template("success.html", name = result) 
+
+        elif request.files['image']:
+
+            imagef = request.files['image'] 
+            imagef.save(imagef.filename) 
+            dicti = {'emotion': 'None'}
+
+            # Remove file after processing
+            if os.path.exists(imagef.filename):
+                os.remove(imagef.filename)
+            return render_template("success.html", name = dicti)  
+
+
+
+
+        
   
 if __name__ == '__main__':  
     app.run(debug = True)  
