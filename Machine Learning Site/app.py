@@ -27,7 +27,8 @@ def success():
             imagef.save(imagef.filename) 
 
             # Run model to predict mood
-            result = feature_extraction.make_prediction(videof.filename)
+            # result = feature_extraction.make_prediction(videof.filename)
+            result = feature_extraction.video_image_prediction(videof.filename, imagef.filename)
             
             # Remove file after processing
             if os.path.exists(videof.filename and imagef.filename):
@@ -41,23 +42,25 @@ def success():
             videof.save(videof.filename)
 
             # Run model to predict mood
-            result = feature_extraction.make_prediction(videof.filename)
+            result = feature_extraction.video_prediction(videof.filename)
             
             # Remove file after processing
             if os.path.exists(videof.filename):
                 os.remove(videof.filename)
-            return render_template("success.html", name = result) 
+            return render_template("success.html", name = [result]) 
 
         elif request.files['image']:
 
             imagef = request.files['image'] 
             imagef.save(imagef.filename) 
-            dicti = {'emotion': 'None'}
+            result = feature_extraction.image_prediction(imagef.filename)
+            # dicti = {'emotion': 'None'}
 
             # Remove file after processing
             if os.path.exists(imagef.filename):
                 os.remove(imagef.filename)
-            return render_template("success.html", name = dicti)  
+            # return render_template("success.html", name = dicti)  
+            return render_template("success.html", name = [result]) 
 
 
 
