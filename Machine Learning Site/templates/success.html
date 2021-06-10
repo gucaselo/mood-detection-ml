@@ -3,7 +3,28 @@
         <title>success</title>  
     </head>  
     <body>  
-        <p>File uploaded successfully</p>  
-        <p>You are feeling {{name.emotion}}</p>  
+        <!-- <p>File uploaded successfully</p>  
+        <p>You are feeling {{name.emotion}}</p>   -->
+        <table>
+            <tr>
+                <th>File type</th>
+                <th>Predicted Mood</th>
+            </tr>
+            {% for dict_item in name %}
+                {% for key, value in dict_item.items() %}
+                    <tr>
+                        <td>{{key}}</td>
+                        <td>{{value}}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+
+        <!-- {% for dict_item in name %}
+            {% for key, value in dict_item.items() %}
+              <h1>File Type: {{key}}</h1>
+              <h2>Mood: {{value}}</h2>
+            {% endfor %}
+        {% endfor %} -->
     </body>  
 </html>  
