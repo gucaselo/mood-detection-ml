@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Emotion Detector</title>
+    <link rel="icon" href="html/psy_icon.jpg">
+
+<!-- Bring in our bootstrap stylesheet -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="html/style.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="html/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="html/style.css" media="screen">
+  </head>
+  <body>
+
+    
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="html/aboutus.html">About Us</a>
+    <a href="html/leave_feedback.html">Leave Feedback</a>
+  </div>
+  
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  
+  <script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  </script>
+
+      <section class="page-header">
+        <h1 class="project-name">Emotion Detector</h1>
+        <h2 class="project-tagline"> Upload Your Emotions</h2>
+        <a href="html/text.html" class="btn">Text</a>
+        <a href="html/record.html" class="btn">Audio</a>
+        <a href="html/image.html" class="btn">Image</a>
+        <a href="html/video.html" class="btn">Video</a>
+      </section>
+
+      <div class="row">
+        <div class="column" style="background-color:white;">
+          <img src="html/angry.png" alt="Example" width="210" height="300">
+        </div>
+        <div class="column" style="background-color:white;">
+          <img src="html/disgust.png" alt="Example" width="210" height="300">
+        </div>
+        <div class="column" style="background-color:white;">
+          <img src="html/neutral.png" alt="Example" width="210" height="300">
+        </div>
+        <div class="column" style="background-color:white;">
+          <img src="html/surprise.png" alt="Example" width="210" height="300">
+        </div>
+        <div class="column" style="background-color:white;">
+          <img src="html/happy.png" alt="Example" width="210" height="300">
+        </div>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <p style="text-align:center">© 2021 Emotion Detector</p>
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+</body>
+</html>
