@@ -97,6 +97,16 @@ def success():
             return render_template("success.html", name = [result]) 
 
 
+        elif request.form['text']:
+
+            text = request.form['text']  
+            result = feature_extraction.text_cleaning(text)
+
+            return render_template("success.html", name = [result])   
+
+
+
+
 
 
         
