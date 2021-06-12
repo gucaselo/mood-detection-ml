@@ -104,70 +104,7 @@
     .project-tagline {
       font-size: 1rem; } }
   
-/* This will control the side */
-      .sidenav {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #159957         ;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-      }
-      
-      .sidenav a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #f1f1f1 ;
-        display: block;
-        transition: 0.3s;
-      }
-      
-      .sidenav a:hover {
-        color: #a9a9a9;
-      }
-      
-      .sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-      }
-      
-      @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
-      }
 
-
-      * {
-        box-sizing: border-box;
-      }
-      
-      /* Create four equal columns that floats next to each other */
-      .column {
-        float: left;
-        width: 20%;
-        padding: 10px;
-        height: 300px; /* Should be removed. Only for demonstration */
-      }
-      
-      /* Clear floats after the columns */
-      .row:after {
-        content: "";
-        display: table;
-        clear: both;
-      }
-
-      img {
-        width: 100%;
-        height: auto;
-      }
 
   
 

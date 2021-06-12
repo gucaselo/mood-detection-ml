@@ -38,12 +38,20 @@
 
       <section class="page-header">
         <h1 class="project-name">Emotion Detector</h1>
-        <h2 class="project-tagline"> Upload Your Emotions</h2>
-        <a href="/text" class="btn">Text</a>
-        <a href="/audio" class="btn">Audio</a>
-        <a href="/image" class="btn">Image</a>
-        <a href="/video" class="btn">Video</a>
+        <h2 class="project-tagline"> Upload Your Video</h2>
+
+        <!-- Adding in video input -->
+
+        <form action="/action_page.php">
+            <label for="video">Select Video:</label>
+            <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
+          </form>
+
+        </script>
+        <br><br>
+        <a href="##" class="btn">Submit</a>
       </section>
+
 
       <div class="row">
         <div class="column" style="background-color:white;">
@@ -63,7 +71,6 @@
         </div>
       </div>
 
-      <br>
       <br>
       <br>
       <br>
