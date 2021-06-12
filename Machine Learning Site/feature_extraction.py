@@ -263,3 +263,55 @@ def video_image_prediction(video, image):
     # result_dict = {'image': result}
     
     return result
+
+
+#--------------------------------------------------------#
+#                     Text Sentiment                     #
+#--------------------------------------------------------#
+
+def text_cleaning(data):
+    import pandas as pd
+    import numpy as np
+    import nltk
+    # nltk.download()
+    from nltk import word_tokenize
+    from nltk.corpus import stopwords
+    import string
+    import pickle
+    
+    # load the model from disk
+    model_filename = 'static/text_dataset/text_emotions_model.sav'
+    model = pickle.load(open(model_filename, 'rb'))
+
+    # load the vectorizer from disk
+    vectorizer_filename = 'static/text_dataset/tfidf_vect.pk'
+    tfidf_vect = pickle.load(open(vectorizer_filename, 'rb'))
+
+    text = data.lower()
+    cleaned = [char for char in text if char not in string.punctuation]
+    cleaned = "".join(cleaned)
+    result = np.array([cleaned])
+    
+    result_prediction = text_features(result, tfidf_vect, model)
+    
+    
+    return result_prediction
+
+
+def text_features(text, tfidf_vect, model):
+    import pandas as pd
+    import numpy as np
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.model_selection import train_test_split
+    from sklearn.naive_bayes import MultinomialNB
+    
+    text_vect = tfidf_vect.transform(text).toarray()
+    
+    emotion = model.predict(text_vect.reshape(1, -1))[0]
+    
+    emotions = {0:'Negative',
+                1:'Positive'}
+    
+    result = emotions[emotion]
+    
+    return result
