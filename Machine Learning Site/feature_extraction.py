@@ -294,8 +294,9 @@ def text_cleaning(data):
     
     result_prediction = text_features(result, tfidf_vect, model)
     
+    emotion = {'text':result_prediction}
     
-    return result_prediction
+    return emotion
 
 
 def text_features(text, tfidf_vect, model):
