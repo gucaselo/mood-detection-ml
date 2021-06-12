@@ -13,6 +13,7 @@ voice_detection/data/ravdessdata/
 facial_detection/emotions_dataset/
 facial_detection/old/
 facial_detection/test_video.mp4
+text_detection/Sentiment_Analysis_Dataset.csv
 readme info.txt
 voice_detection/mood_model_RandomForest_v4.ipynb
 develop-eggs/
