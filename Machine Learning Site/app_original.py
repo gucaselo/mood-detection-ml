@@ -28,39 +28,15 @@ app = Flask(__name__)
 #                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
 
 @app.route('/')  
-def index():  
+def upload():  
     return render_template("index.html") 
 
-# @app.route('/text', methods = ['POST'])  
-@app.route('/text')  
-def text():  
-    return render_template("text.html") 
+# @app.route('/video_feed')
+# def video_feed():
+#     result = Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+#     print(result)
 
-# @app.route('/audio', methods = ['POST'])  
-@app.route('/audio')  
-def audio():  
-    return render_template("record.html") 
-
-# @app.route('/image', methods = ['POST']) 
-@app.route('/image')   
-def image():  
-    return render_template("image.html") 
-
-# @app.route('/video', methods = ['POST'])  
-@app.route('/video')  
-def video():  
-    return render_template("video.html") 
-
-# @app.route('/about', methods = ['POST'])  
-@app.route('/about') 
-def about():  
-    return render_template("aboutus.html") 
-
-# @app.route('/feedback', methods = ['POST'])  
-@app.route('/feedback') 
-def feedback():  
-    return render_template("leave_feedback.html") 
-
+#     return result
  
 @app.route('/success', methods = ['POST'])  
 def success():  
