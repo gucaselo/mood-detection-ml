@@ -195,13 +195,19 @@
       
       /* Create four equal columns that floats next to each other */
       .column {
-        float: left;
-        width: 20%;
-        padding: 10px;
-        height: 300px; /* Should be removed. Only for demonstration */
+        grid-column: 1 / 3;
+        margin: auto;
+
       }
 
 
+            /* Create four equal columns that floats next to each other */
+            /* .column {
+              float: left;
+              width: 25%;
+              padding: 10px;
+              height: 300px; /* Should be removed. Only for demonstration */
+              
       /*.column2 {
         float: left;
         width: 20%;
