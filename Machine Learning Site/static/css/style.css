@@ -59,7 +59,7 @@
       border-color: rgba(255, 255, 255, 0.3);
     }
   
-  .btn {
+  /* .btn {
     display: inline-block;
     margin-bottom: 1rem;
     color: rgba(255, 255, 255, 0.7);
@@ -76,7 +76,7 @@
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3); }
+    border-color: rgba(255, 255, 255, 0.3); } */
   
   @media screen and (min-width: 64em) {
     .btn {
