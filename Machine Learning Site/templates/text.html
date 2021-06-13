@@ -42,8 +42,8 @@
         <h1 class="project-name">Emotion Detector</h1>
         <h2 class="project-tagline"> Upload Your Text</h2>
 
-        <form action = "/emotiontext" method = "post" enctype="multipart/form-data">  
-          <!-- <input type="text" name="text" placeholder="Tell us how you feel?"/> -->
+        <form action = "/emotion" method = "post" enctype="multipart/form-data">  
+          <input type="hidden" name="form-name" value="text">
           <textarea class="input" name="text" placeholder="Tell us how you feel" rows="5" cols="50"></textarea>
           <br><br>
           <input type = "submit" value="Submit">  
