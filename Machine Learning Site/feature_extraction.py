@@ -87,7 +87,7 @@ def video_prediction(path):
     
     # Emotion labels
     emotion_codes = {
-                0: 'Angry',
+                0:'Angry',
                 1:'Disgust' ,
                 2:'Fear',
                 3:'Happy',
