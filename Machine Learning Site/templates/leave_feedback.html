@@ -38,12 +38,13 @@
       <section class="page-header">
         <h1 class="project-name">Emotion Detector</h1>
         <h2 class="project-tagline"> Leave Feedback</h2>
-        {% if name %}
-        <h5>{{ name }}</h5>
-        {% endif %}
+
         <form action = "/emotion" method = "post" enctype="multipart/form-data">  
           <input type="hidden" name="form-name" value="feedback">
           <textarea class="input" name="feedback" placeholder="Tell us how you feel" rows="5" cols="50"></textarea>
+          {% if name %}
+          <h5>{{ name }}</h5>
+          {% endif %}
           <br><br>
           <input type = "submit" value="Submit"> 
         </form>
