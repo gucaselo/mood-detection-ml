@@ -63,25 +63,48 @@ def image():
     # return render_template("image.html")
     return render_template("image.html")
 
-@app.route('/emotion', methods = ['POST'])   
-def emotion():  
+@app.route('/emotionimage', methods = ['POST'])   
+def emotionimage():  
     if request.method == 'POST':  
-        emotion = []
         if request.files['image']:
             imagef = request.files['image'] 
             imagef.save(imagef.filename) 
             result = feature_extraction.image_prediction(imagef.filename)
-            # result_dict = {'emotion': result}
-            # emotion.append(result)
 
             # Remove file after processing
             if os.path.exists(imagef.filename):
                 os.remove(imagef.filename)
-            
-            # return jsonify(emotion)
-                
-            # return render_template("image.html")
+
             return render_template("image.html", name = result)
+        else:
+            return render_template("image.html")
+
+@app.route('/emotiontext', methods = ['POST'])   
+def emotiontext():  
+    if request.method == 'POST':
+        if request.form['text']:
+            text = request.form['text']  
+            result = feature_extraction.text_cleaning(text)
+
+            return render_template("text.html", name = result) 
+        else:
+            return render_template("text.html") 
+
+@app.route('/emotionaudio', methods = ['POST'])   
+def emotionaudio():  
+    if request.method == 'POST':
+        if request.files['audio']:
+            audiof = request.files['audio'] 
+            audiof.save(audiof.filename) 
+            result = feature_extraction.audio_prediction(audiof.filename)
+
+            # Remove file after processing
+            if os.path.exists(audiof.filename):
+                os.remove(audiof.filename)
+
+            return render_template("record.html", name = result) 
+        else:
+            return render_template("record.html") 
 
 # @app.route('/video', methods = ['POST'])  
 @app.route('/video')  
@@ -114,7 +137,7 @@ def data():
             #     os.remove(imagef.filename)
             
             # return jsonify(emotion)
-            return render_template("image2.html", name = result) 
+            return render_template("image2.html", name = result)   
  
 @app.route('/success', methods = ['POST'])  
 def success():  

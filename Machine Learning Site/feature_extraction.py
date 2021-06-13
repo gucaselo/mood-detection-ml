@@ -255,6 +255,17 @@ def audio_prediction(path):
     
     return result_dict
 
+# To be used as a reference only
+# emotions={
+#       '01':'neutral',
+#       '02':'neutral',
+#       '03':'happy',
+#       '04':'sad',
+#       '05':'angry',
+#       '06':'fearful',
+#       '07':'disgust',
+#       '08':'surprised'
+# }
 
 
 
