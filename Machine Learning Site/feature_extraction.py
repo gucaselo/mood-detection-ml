@@ -339,3 +339,23 @@ def text_features(text, tfidf_vect, model):
     result = emotions[emotion]
     
     return result
+
+
+#--------------------------------------------------------#
+#                       Feedbacks                        #
+#--------------------------------------------------------#
+
+def feedback(text):
+    import pandas as pd
+    df = pd.read_csv('feedbacks.csv')
+    df['date']= pd.to_datetime(df['date'])
+    
+    df2 = pd.DataFrame({'date':[pd.to_datetime("now")], 'feedbacks':[text]})
+    df2['date']= pd.to_datetime(df2['date'])
+    
+    df3 = df.append(df2, ignore_index=True)
+    df3.to_csv('feedbacks.csv', index=False, date_format='%Y-%m-%d %H:%M:%S')
+
+    response = "Thanks for your feedback!!"
+
+    return response
