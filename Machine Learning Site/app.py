@@ -30,38 +30,30 @@ app = Flask(__name__)
 @app.route('/')  
 def index():  
     return render_template("index.html") 
-
-# @app.route('/text', methods = ['POST'])  
+ 
 @app.route('/text')  
 def text():  
     return render_template("text.html") 
 
-# @app.route('/audio', methods = ['POST'])  
 @app.route('/audio')  
 def audio():  
     return render_template("record.html") 
-
-# @app.route('/image', methods = ['POST']) 
+ 
 @app.route('/image')   
 def image():  
-    # if request.method == 'POST':  
-    #     emotion = []
-    #     if request.files['image']:
-    #         imagef = request.files['image'] 
-    #         imagef.save(imagef.filename) 
-    #         result = feature_extraction.image_prediction(imagef.filename)
-    #         result_dict = {'emotion': 'result'}
-    # #         emotion.append(result_dict)
-
-    # # #         # Remove file after processing
-    # # #         if os.path.exists(imagef.filename):
-    # # #             os.remove(imagef.filename)
-            
-    # #         return jsonify(emotion)
-    #         return render_template("image.html", name = result)
-            
-    # return render_template("image.html")
     return render_template("image.html")
+ 
+@app.route('/video')  
+def video():  
+    return render_template("video.html") 
+ 
+@app.route('/about') 
+def about():  
+    return render_template("aboutus.html") 
+
+@app.route('/feedback') 
+def feedback():  
+    return render_template("leave_feedback.html") 
 
 @app.route('/emotionimage', methods = ['POST'])   
 def emotionimage():  
@@ -106,42 +98,45 @@ def emotionaudio():
         else:
             return render_template("record.html") 
 
-# @app.route('/video', methods = ['POST'])  
-@app.route('/video')  
-def video():  
-    return render_template("video.html") 
-
-# @app.route('/about', methods = ['POST'])  
-@app.route('/about') 
-def about():  
-    return render_template("aboutus.html") 
-
-# @app.route('/feedback', methods = ['POST'])  
-@app.route('/feedback') 
-def feedback():  
-    return render_template("leave_feedback.html") 
-
-@app.route('/data', methods = ['POST'])
-def data():
-    if request.method == 'POST':  
-        # emotion = []
-        if request.files['image']:
-            imagef = request.files['image'] 
-            imagef.save(imagef.filename) 
-            result = feature_extraction.image_prediction(imagef.filename)
-            # result_dict = {'emotion': result}
-            # emotion.append(result_dict)
+@app.route('/emotionvideo', methods = ['POST'])   
+def emotionvideo():  
+    if request.method == 'POST':
+        if request.files['video']:
+            videof = request.files['video'] 
+            videof.save(videof.filename) 
+            result = feature_extraction.video_prediction(videof.filename)
 
             # Remove file after processing
-            # if os.path.exists(imagef.filename):
-            #     os.remove(imagef.filename)
+            if os.path.exists(videof.filename):
+                os.remove(videof.filename)
+
+            return render_template("video.html", name = result) 
+        else:
+            return render_template("video.html") 
+
+
+
+# @app.route('/data', methods = ['POST'])
+# def data():
+#     if request.method == 'POST':  
+#         # emotion = []
+#         if request.files['image']:
+#             imagef = request.files['image'] 
+#             imagef.save(imagef.filename) 
+#             result = feature_extraction.image_prediction(imagef.filename)
+#             # result_dict = {'emotion': result}
+#             # emotion.append(result_dict)
+
+#             # Remove file after processing
+#             # if os.path.exists(imagef.filename):
+#             #     os.remove(imagef.filename)
             
-            # return jsonify(emotion)
-            return render_template("image2.html", name = result)   
+#             # return jsonify(emotion)
+#             return render_template("image2.html", name = result)   
  
-@app.route('/success', methods = ['POST'])  
-def success():  
-    if request.method == 'POST':  
+# @app.route('/success', methods = ['POST'])  
+# def success():  
+#     if request.method == 'POST':  
 
         # if request.files['video'] and request.files['image']:
         #     videof = request.files['video'] 
@@ -172,18 +167,18 @@ def success():
         #         os.remove(videof.filename)
         #     return render_template("success.html", name = [result]) 
 
-        if request.files['image']:
+        # if request.files['image']:
 
-            imagef = request.files['image'] 
-            imagef.save(imagef.filename) 
-            result = feature_extraction.image_prediction(imagef.filename)
-            # dicti = {'emotion': 'None'}
+        #     imagef = request.files['image'] 
+        #     imagef.save(imagef.filename) 
+        #     result = feature_extraction.image_prediction(imagef.filename)
+        #     # dicti = {'emotion': 'None'}
 
-            # Remove file after processing
-            if os.path.exists(imagef.filename):
-                os.remove(imagef.filename)
-            # return render_template("success.html", name = dicti)  
-            return render_template("success.html", name = [result]) 
+        #     # Remove file after processing
+        #     if os.path.exists(imagef.filename):
+        #         os.remove(imagef.filename)
+        #     # return render_template("success.html", name = dicti)  
+        #     return render_template("success.html", name = [result]) 
 
         # elif request.files['audio']:
 
@@ -206,11 +201,6 @@ def success():
         #     return render_template("success.html", name = [result])   
 
 
-
-
-
-
-        
   
 if __name__ == '__main__':  
     app.run(debug = True)  

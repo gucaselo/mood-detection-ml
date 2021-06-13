@@ -5,6 +5,9 @@
     <title>Emotion Detector</title>
     <link rel="icon" href="{{ url_for('static', filename = 'img/psy_icon.jpg') }}">
 
+<!-- FontAwesome -->
+<script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"></script>
+
 <!-- Bring in our bootstrap stylesheet -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -42,18 +45,25 @@
 
         <!-- Adding in video input -->
 
-        <form action="/action_page.php">
+        <form action="/emotionvideo" method = "post" enctype="multipart/form-data">
+          <label for="img">Select Video:</label>
+          <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
+          <br><br><br><br>
+          <input type = "submit" value="Submit">
+        </form>
+
+        <!-- <form action="/action_page.php">
             <label for="video">Select Video:</label>
             <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
           </form>
 
         </script>
         <br><br>
-        <a href="##" class="btn">Submit</a>
+        <a href="##" class="btn">Submit</a> -->
       </section>
 
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="column" style="background-color:white;">
           <img src="{{ url_for('static', filename = 'img/angry.png') }}" alt="Example" width="210" height="300">
         </div>
@@ -68,6 +78,106 @@
         </div>
         <div class="column" style="background-color:white;">
           <img src="{{ url_for('static', filename = 'img/happy.png') }}" alt="Example" width="210" height="300">
+        </div>
+      </div> -->
+
+      <div class="row">
+        <div class="column" style="background-color:white;">
+          <!-- <img src="{{ url_for('static', filename = 'img/angry.png') }}" alt="Example" width="210" height="300"> -->
+          <i class="far fa-angry" width="210" height="300"></i>
+            {% if name %}
+              {% if name.video == "Angry" %}
+                <style>
+                  .fa-angry {
+                    color:red;
+                    /* color: {{ name.image }}; */
+                  }
+                </style>
+                <h3>{{ name.video }}</h3>
+              {% endif %}
+            {% endif %}
+        </div>
+        <div class="column" style="background-color:white;">
+          <!-- <img src="{{ url_for('static', filename = 'img/disgust.png') }}" alt="Example" width="210" height="300"> -->
+          <i class="far fa-meh-rolling-eyes" width="210" height="300"></i>
+          {% if name %}
+            {% if name.video == "Disgust" %}
+              <style>
+                .fa-meh-rolling-eyes {
+                  color: greenyellow;
+                }
+              </style>
+              <h3>{{ name.video }}</h3>
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="column" style="background-color:white;">
+          <!-- <img src="{{ url_for('static', filename = 'img/neutral.png') }}" alt="Example" width="210" height="300"> -->
+          <i class="far fa-meh" width="210" height="300"></i>
+          {% if name %}
+            {% if name.video == "Neutral" %}
+              <style>
+                .fa-meh {
+                  color: gray;
+                }
+              </style>
+              <h3>{{ name.video }}</h3>
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="column" style="background-color:white;">
+          <!-- <img src="{{ url_for('static', filename = 'img/surprise.png') }}" alt="Example" width="210" height="300"> -->
+          <i class="far fa-surprise" width="210" height="300"></i>
+          {% if name %}
+            {% if name.video == "Surprise" %}
+              <style>
+                .fa-surprise {
+                  color: blue;
+                }
+              </style>
+              <h3>{{ name.video }}</h3>
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="column" style="background-color:white;">
+          <!-- <img src="{{ url_for('static', filename = 'img/happy.png') }}" alt="Example" width="210" height="300"> -->
+          <i class="far fa-laugh" width="210" height="300"></i>
+          {% if name %}
+            {% if name.video == "Happy" %}
+              <style>
+                .fa-laugh {
+                  color: darkorchid;
+                }
+              </style>
+              <h3>{{ name.video }}</h3>
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="column">
+          <i class="far fa-grimace" width="210" height="300"></i>
+          {% if name %}
+            {% if name.video == "Fear" %}
+              <style>
+                .fa-grimace {
+                  color: orange;
+                }
+              </style>
+              <h3>{{ name.video }}</h3>
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="column">
+          <i class="far fa-frown" width="210" height="300"></i>
+          {% if name %}
+            {% if name.video == "Sad" %}
+              <style>
+                .fa-frown{
+                  color: yellow;
+                }
+              </style>
+              <h3>{{ name.video }}</h3>
+            {% endif %}
+          {% endif %}
         </div>
       </div>
 
