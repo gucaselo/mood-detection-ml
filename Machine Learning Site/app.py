@@ -114,6 +114,16 @@ def emotionvideo():
         else:
             return render_template("video.html") 
 
+@app.route('/leftfeedback', methods = ['POST'])   
+def leftfeedback():  
+    if request.method == 'POST':
+        if request.form['feedback']:
+            text = request.form['feedback']  
+            response = feature_extraction.feedback(text)
+
+            return render_template("leave_feedback.html", name = response) 
+        else:
+            return render_template("leave_feedback.html") 
 
 
 # @app.route('/data', methods = ['POST'])
