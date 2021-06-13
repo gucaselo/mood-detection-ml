@@ -15,6 +15,50 @@
     a:hover {
       text-decoration: underline; }
   
+  h3 {text-align: center;
+
+    }
+  
+  /* i {
+    width: 100%;
+    height: auto;
+  } */
+
+  /* #angry-icon {
+    color: red;
+  } */
+  .fa-angry, .fa-meh-rolling-eyes, .fa-meh, .fa-surprise, .fa-laugh, .fa-grimace, .fa-frown {
+    color: lightgrey;
+    font-size: 12em;
+    /* margin-left: 100px;
+    margin-top: 80px; */
+    margin-left: 70px;
+    margin-top: 40px;
+    
+  }
+
+  input[type="submit"]{
+    width: 5.5em;  
+    height: 3em;
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.3rem;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;}
+    input[type="submit"] + input[type="submit"] {
+      margin-left: 1rem;
+    }
+    input[type="submit"]:hover{
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  
   .btn {
     display: inline-block;
     margin-bottom: 1rem;
@@ -156,6 +200,15 @@
         padding: 10px;
         height: 300px; /* Should be removed. Only for demonstration */
       }
+
+
+      /*.column2 {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        height: 300px; /* Should be removed. Only for demonstration */
+        /* padding-top: 100px; 
+      }*/
       
       /* Clear floats after the columns */
       .row:after {

@@ -192,7 +192,19 @@ def image_prediction(path):
                 5:'Surprise',
                 6:'Neutral'
                }
+
+    # emotion_codes = {
+    #         0: ['Angry', 'red'],
+    #         1:['Disgust', 'greenyellow'],
+    #         2:['Fear', 'orange'],
+    #         3:['Happy', 'darkorchid'],
+    #         4:['Sad', 'yellow'], 
+    #         5:['Surprise', 'blue'],
+    #         6:['Neutral', 'gray']
+    #        }
+
     result = emotion_codes[prediction[0]]
+    # color = emotion_codes[prediction[0][1]]
     
     result_dict = {'image': result}
     
