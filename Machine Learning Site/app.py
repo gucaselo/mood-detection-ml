@@ -44,7 +44,44 @@ def audio():
 # @app.route('/image', methods = ['POST']) 
 @app.route('/image')   
 def image():  
-    return render_template("image.html") 
+    # if request.method == 'POST':  
+    #     emotion = []
+    #     if request.files['image']:
+    #         imagef = request.files['image'] 
+    #         imagef.save(imagef.filename) 
+    #         result = feature_extraction.image_prediction(imagef.filename)
+    #         result_dict = {'emotion': 'result'}
+    # #         emotion.append(result_dict)
+
+    # # #         # Remove file after processing
+    # # #         if os.path.exists(imagef.filename):
+    # # #             os.remove(imagef.filename)
+            
+    # #         return jsonify(emotion)
+    #         return render_template("image.html", name = result)
+            
+    # return render_template("image.html")
+    return render_template("image.html")
+
+@app.route('/emotion', methods = ['POST'])   
+def emotion():  
+    if request.method == 'POST':  
+        emotion = []
+        if request.files['image']:
+            imagef = request.files['image'] 
+            imagef.save(imagef.filename) 
+            result = feature_extraction.image_prediction(imagef.filename)
+            # result_dict = {'emotion': result}
+            # emotion.append(result)
+
+            # Remove file after processing
+            if os.path.exists(imagef.filename):
+                os.remove(imagef.filename)
+            
+            # return jsonify(emotion)
+                
+            # return render_template("image.html")
+            return render_template("image.html", name = result)
 
 # @app.route('/video', methods = ['POST'])  
 @app.route('/video')  
@@ -61,41 +98,58 @@ def about():
 def feedback():  
     return render_template("leave_feedback.html") 
 
+@app.route('/data', methods = ['POST'])
+def data():
+    if request.method == 'POST':  
+        # emotion = []
+        if request.files['image']:
+            imagef = request.files['image'] 
+            imagef.save(imagef.filename) 
+            result = feature_extraction.image_prediction(imagef.filename)
+            # result_dict = {'emotion': result}
+            # emotion.append(result_dict)
+
+            # Remove file after processing
+            # if os.path.exists(imagef.filename):
+            #     os.remove(imagef.filename)
+            
+            # return jsonify(emotion)
+            return render_template("image2.html", name = result) 
  
 @app.route('/success', methods = ['POST'])  
 def success():  
     if request.method == 'POST':  
 
-        if request.files['video'] and request.files['image']:
-            videof = request.files['video'] 
-            imagef = request.files['image']  
-            videof.save(videof.filename)
-            imagef.save(imagef.filename) 
+        # if request.files['video'] and request.files['image']:
+        #     videof = request.files['video'] 
+        #     imagef = request.files['image']  
+        #     videof.save(videof.filename)
+        #     imagef.save(imagef.filename) 
 
-            # Run model to predict mood
-            # result = feature_extraction.make_prediction(videof.filename)
-            result = feature_extraction.video_image_prediction(videof.filename, imagef.filename)
+        #     # Run model to predict mood
+        #     # result = feature_extraction.make_prediction(videof.filename)
+        #     result = feature_extraction.video_image_prediction(videof.filename, imagef.filename)
             
-            # Remove file after processing
-            if os.path.exists(videof.filename and imagef.filename):
-                os.remove(videof.filename)
-                os.remove(imagef.filename)
-            return render_template("success.html", name = result) 
+        #     # Remove file after processing
+        #     if os.path.exists(videof.filename and imagef.filename):
+        #         os.remove(videof.filename)
+        #         os.remove(imagef.filename)
+        #     return render_template("success.html", name = result) 
 
-        elif request.files['video']:
+        # elif request.files['video']:
 
-            videof = request.files['video']  
-            videof.save(videof.filename)
+        #     videof = request.files['video']  
+        #     videof.save(videof.filename)
 
-            # Run model to predict mood
-            result = feature_extraction.video_prediction(videof.filename)
+        #     # Run model to predict mood
+        #     result = feature_extraction.video_prediction(videof.filename)
             
-            # Remove file after processing
-            if os.path.exists(videof.filename):
-                os.remove(videof.filename)
-            return render_template("success.html", name = [result]) 
+        #     # Remove file after processing
+        #     if os.path.exists(videof.filename):
+        #         os.remove(videof.filename)
+        #     return render_template("success.html", name = [result]) 
 
-        elif request.files['image']:
+        if request.files['image']:
 
             imagef = request.files['image'] 
             imagef.save(imagef.filename) 
@@ -108,25 +162,25 @@ def success():
             # return render_template("success.html", name = dicti)  
             return render_template("success.html", name = [result]) 
 
-        elif request.files['audio']:
+        # elif request.files['audio']:
 
-            audiof = request.files['audio'] 
-            audiof.save(audiof.filename) 
-            result = feature_extraction.audio_prediction(audiof.filename)
+        #     audiof = request.files['audio'] 
+        #     audiof.save(audiof.filename) 
+        #     result = feature_extraction.audio_prediction(audiof.filename)
 
-            # Remove file after processing
-            if os.path.exists(audiof.filename):
-                os.remove(audiof.filename)
-            # return render_template("success.html", name = dicti)  
-            return render_template("success.html", name = [result]) 
+        #     # Remove file after processing
+        #     if os.path.exists(audiof.filename):
+        #         os.remove(audiof.filename)
+        #     # return render_template("success.html", name = dicti)  
+        #     return render_template("success.html", name = [result]) 
 
 
-        elif request.form['text']:
+        # elif request.form['text']:
 
-            text = request.form['text']  
-            result = feature_extraction.text_cleaning(text)
+        #     text = request.form['text']  
+        #     result = feature_extraction.text_cleaning(text)
 
-            return render_template("success.html", name = [result])   
+        #     return render_template("success.html", name = [result])   
 
 
 
