@@ -45,8 +45,9 @@
 
         <!-- Adding in video input -->
 
-        <form action="/emotionvideo" method = "post" enctype="multipart/form-data">
+        <form action="/emotion" method = "post" enctype="multipart/form-data">
           <label for="img">Select Video:</label>
+          <input type="hidden" name="form-name" value="video">
           <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
           <br><br><br><br>
           <input type = "submit" value="Submit">

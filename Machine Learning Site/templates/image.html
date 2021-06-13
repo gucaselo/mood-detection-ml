@@ -45,9 +45,10 @@
 
         <!-- Adding in recording input -->
 
-        <form action="/emotionimage" method = "post" enctype="multipart/form-data">
+        <form action="/emotion" method = "post" enctype="multipart/form-data">
             <label for="img">Select Image:</label>
-            <input type="file" id="img" name="image" accept="image/*">
+            <input type="hidden" name="form-name" value="image">
+            <input type="file" id="img" name="image" value= "image" accept="image/*">
             <br><br><br><br>
             <input type = "submit" value="Submit">
         </form>

@@ -45,7 +45,8 @@
 
         <!-- Adding in recording input -->
 
-        <form action="/emotionaudio" method = "post" enctype="multipart/form-data">
+        <form action="/emotion" method = "post" enctype="multipart/form-data">
+          <input type="hidden" name="form-name" value="audio">
           <input type="file" accept="audio/*" capture id="recorder" name="audio">
             <audio id="player" controls></audio>
             <script>

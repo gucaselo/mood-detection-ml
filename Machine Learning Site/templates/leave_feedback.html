@@ -41,7 +41,8 @@
         {% if name %}
         <h5>{{ name }}</h5>
         {% endif %}
-        <form action = "/leftfeedback" method = "post" enctype="multipart/form-data">  
+        <form action = "/emotion" method = "post" enctype="multipart/form-data">  
+          <input type="hidden" name="form-name" value="feedback">
           <textarea class="input" name="feedback" placeholder="Tell us how you feel" rows="5" cols="50"></textarea>
           <br><br>
           <input type = "submit" value="Submit"> 
