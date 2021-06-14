@@ -16,6 +16,7 @@ facial_detection/test_video.mp4
 text_detection/Sentiment_Analysis_Dataset.csv
 readme info.txt
 voice_detection/mood_model_RandomForest_v4.ipynb
+unused_files/
 develop-eggs/
 dist/
 downloads/
