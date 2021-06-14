@@ -172,39 +172,34 @@ def extract_features_image(path):
     return emotions_features2
 
 def image_prediction(path):
+    import pickle
     from tensorflow.keras.models import load_model
     model =load_model("static/img_dataset/image_emotions_model_test.h5")
+
+    # Load label encoder
+    labelencoder_filename = 'static/img_dataset/label_encoder.pk'
+    label_encoder = pickle.load(open(labelencoder_filename, 'rb'))
     
     # Extract image file features
     df = extract_features_image(path)
     
     # Make prediction using imported model
     prediction = model.predict_classes(df)
-#     prediction_label = label_encoder.inverse_transform(prediction)
+    prediction_label = label_encoder.inverse_transform(prediction)
     
-    # Emotion labels
-    emotion_codes = {
-                0: 'Angry',
-                1:'Disgust' ,
-                2:'Fear',
-                3:'Happy',
-                4:'Sad',
-                5:'Surprise',
-                6:'Neutral'
-               }
-
+    # # Emotion labels
     # emotion_codes = {
-    #         0: ['Angry', 'red'],
-    #         1:['Disgust', 'greenyellow'],
-    #         2:['Fear', 'orange'],
-    #         3:['Happy', 'darkorchid'],
-    #         4:['Sad', 'yellow'], 
-    #         5:['Surprise', 'blue'],
-    #         6:['Neutral', 'gray']
-    #        }
+    #             0: 'Angry',
+    #             1:'Disgust' ,
+    #             2:'Fear',
+    #             3:'Happy',
+    #             4:'Sad',
+    #             5:'Surprise',
+    #             6:'Neutral'
+    #            }
 
-    result = emotion_codes[prediction[0]]
-    # color = emotion_codes[prediction[0][1]]
+    # result = emotion_codes[prediction[0]]
+    result = prediction_label[0].capitalize()
     
     result_dict = {'image': result}
     
