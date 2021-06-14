@@ -37,8 +37,8 @@ def text():
 
 @app.route('/audio')  
 def audio():  
-    return render_template("record.html") 
- 
+    return render_template("record.html")
+
 @app.route('/image')   
 def image():  
     return render_template("image.html")
